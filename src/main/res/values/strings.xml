@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">paykunpay-lib</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="action_button_toast_text">Action Button Clicked with URL: %s</string>
+    <string name="menu_item_toast_text">Menu Item Clicked with URL: %s</string>
+    <string name="toolbar_toast_text">Toolbar Clicked with URL: %s</string>
+    <string name="unknown_toast_text">Unknown Action Clicked with URL: %s</string>
+    <string name="browser_actions_desc">Tap the button to open custom tab. Long press the button to see the actions menu.</string>
+</resources>

@@ -1,0 +1,89 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+    }
+}
+
+
+def githubProperties = new Properties()
+  githubProperties.load(new FileInputStream(rootProject.file("github.properties"))) //Set env variable GPR_USER & GPR_API_KEY if not adding a properties file
+
+def getVersionName = { ->
+    return "1.1.17" // Replace with version Name
+}
+
+def getArtificatId = { ->
+    return "paykun-androidx-sdk" // Replace with library name ID
+}
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        minSdkVersion 16
+        //noinspection OldTargetApi
+        targetSdkVersion 28
+        versionCode 17
+        versionName "1.1.17"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildToolsVersion '28.0.3'
+}
+
+publishing {
+    publications {
+        gpr(MavenPublication) {
+            groupId 'com.paykun.sdk' // Replace with group ID
+            artifactId getArtificatId()
+            version getVersionName()
+            artifact("$buildDir/outputs/aar/${getArtificatId()}-release.aar")
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            /** Configure path of your package repository on Github
+             ** Replace GITHUB_USERID with your/organisation Github userID
+             ** and REPOSITORY with the repository name on GitHub
+             */
+            url = uri("https://maven.pkg.github.com/paykunsdk/paykun-androidx-sdk")
+            credentials {
+                /** Create github.properties in root project folder file with
+                 ** gpr.usr=GITHUB_USER_ID & gpr.key=PERSONAL_ACCESS_TOKEN
+                 ** Set env variable GPR_USER & GPR_API_KEY if not adding a properties file**/
+
+                username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
+                password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
+            }
+        }
+    }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.android.volley:volley:1.1.1'
+    // LoganSquare annotation processor
+    annotationProcessor 'com.bluelinelabs:logansquare-compiler:1.3.6'
+    // LoganSquare runtime library
+    implementation 'com.bluelinelabs:logansquare:1.3.6'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.11.2'
+
+}

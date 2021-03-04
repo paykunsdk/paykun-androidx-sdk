@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:navigationIcon="?attr/homeAsUpIndicator">
+    </androidx.appcompat.widget.Toolbar>
+<FrameLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#50acea"
+    android:layout_height="match_parent"
+    tools:context=".PaykunPaymentActivity">
+    <WebView
+
+        android:id="@+id/webview"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </WebView>
+    <ProgressBar
+        android:id="@+id/progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:max="100"
+        android:backgroundTint="#828282"
+        android:layout_below="@+id/framelauout"
+        android:indeterminateTint="#1a09d6"
+        android:layout_marginTop="-7dp"/>
+    <ImageView
+        android:id="@+id/img_progress"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_launcher"/>
+    <!--<paykunpay.yashoka.com.paykunpay_lib.CircularProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        app:animateProgress="true"
+        app:backgroundStrokeColor="#ff3f51b5"
+        app:backgroundStrokeWidth="2dp"
+        app:drawBackgroundStroke="false"
+        app:foregroundStrokeCap="butt"
+        app:foregroundStrokeColor="#ffff4081"
+        app:foregroundStrokeWidth="3dp"
+        app:indeterminate="false"
+        app:indeterminateRotationAnimationDuration="1200"
+        app:indeterminateSweepAnimationDuration="600"
+        app:indeterminateMinimumAngle="45"
+        app:maximum="100"
+        app:progress="50"
+        android:layout_gravity="center"
+        app:progressAnimationDuration="100"
+        app:startAngle="270"/>-->
+</FrameLayout>
+</LinearLayout>

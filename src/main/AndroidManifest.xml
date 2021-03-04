@@ -1,0 +1,22 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.paykun.sdk" >
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <queries>
+        <package android:name="net.one97.paytm" />
+        <package android:name="com.phonepe.app" />
+        <package android:name="com.google.android.apps.nbu.paisa.user" />
+    </queries>
+    <application
+        >
+        <activity android:name=".PaykunPaymentActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
